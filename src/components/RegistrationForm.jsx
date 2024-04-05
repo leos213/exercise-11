@@ -1,4 +1,5 @@
-import React, { Component } from "react";
+import React from "react";
+
 import styled from "styled-components";
 
 const MainDiv = styled.form`
@@ -14,10 +15,6 @@ const InputVal = styled.input`
   border: 1px solid #ccc;
   border-radius: 4px;
   outline: none;
-
-  &:focus {
-    border-color: #007bff;
-  }
 `;
 
 const LabInput = styled.div`
@@ -34,7 +31,7 @@ const ErrorSpan = styled.span`
   color: red;
 `;
 
-class RegistrationForm extends Component {
+class RegistrationForm extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -71,27 +68,28 @@ class RegistrationForm extends Component {
     const { name, lastName, yearOfBirth, email, password, repeatPassword } =
       this.state;
 
-    // Validation
     let errors = {};
     if (!name) {
       errors.name = "Name is required";
     }
+
     if (!lastName) {
       errors.lastName = "Last name is required";
     }
+
     if (!yearOfBirth) {
       errors.yearOfBirth = "Year of birth is required";
     }
+
     if (!email) {
       errors.email = "Email is required";
-    } else if (!/\S+@\S+\.\S+/.test(email)) {
-      errors.email = "Email is invalid";
     }
     if (!password) {
       errors.password = "Password is required";
     } else if (password.length < 8) {
       errors.password = "Password must be at least 8 characters long";
     }
+
     if (!repeatPassword) {
       errors.repeatPassword = "Repeat password is required";
     } else if (password !== repeatPassword) {
@@ -101,7 +99,6 @@ class RegistrationForm extends Component {
     if (Object.keys(errors).length > 0) {
       this.setState({ errors });
     } else {
-      // Form submission logic goes here
       console.log("Form submitted successfully!");
     }
   };
