@@ -1,9 +1,11 @@
 import RegistrationForm from "./components/RegistrationForm";
+import GlobalStyle from "./data/GlobalStyles";
 
 function App() {
   return (
     <>
-      <RegistrationForm />;
+      <GlobalStyle />
+      <RegistrationForm />
     </>
   );
 }
